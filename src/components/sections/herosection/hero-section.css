@@ -1,0 +1,5 @@
+.image-rendering{
+  image-rendering: pixelated;
+  image-orientation: from-image;
+  image-resolution: 500dpi;
+}
