@@ -1,23 +1,46 @@
-import React from 'react';
-import herosectiontwo from '../../../assets/herosection-two/herosection-two.png';
+import React from "react";
+import herosectiontwo from "../../../assets/herosection-two/herosection-two.jpg";
 
 function HeroSectionTwo() {
   return (
-    <section className='flex mx-14 my-20 align-middle'>
-      <div className='my-auto w-7/12'>
-        <h2 className='text-[#FFC836] font-black text-3xl'>Selamat Datang, Di Kuyliner!</h2>
-        <h1 className='text-[#223322] font-extrabold text-4xl my-5'>Menu Varian Kuliner Untuk Pecinta Makanan</h1>
-        <p className='text-[#223322] font-medium text-lg'>Agar Kuyliner bisa memberikan pengalaman rasa yang terbaik bagi anda. Daftar sebagai pengguna untuk mencari citra rasa dari hidangan UMKM indonesia.</p>
-        <div className='mt-5 flex gap-5'>
-          <button className='border rounded-sm border-[#FFC836] px-5 py-1 font-bold text-xl text-[#FFC836]'>Masuk</button>
-          <button className='rounded-sm bg-[#FFC836] px-5 py-1 font-bold text-xl text-white'>Daftar</button>
+    <section className="pt-20">
+      <div className="container">
+        <div className="flex flex-wrap">
+          <div className="w-full self-center px-4 lg:w-1/2">
+            <h1 className="text-base font-semibold text-primary text-xl md:text-xl">
+              Halo, Selamat Datang
+            </h1>
+            <h2 className="font-bold text-dark text-5xl mt-1 mb-3">
+              Menu Varian Kuliner{" "}
+              <span className="block font-bold">Untuk Pecinta Makanan</span>
+            </h2>
+            <p className="font-medium text-dark mb-10 leading-relaxed">
+              {" "}
+              Kuyliner memberikan pengalaman rasa yang terbaik bagi anda. Daftar
+              sebagai pengguna untuk mencari citra rasa dari hidangan UMKM
+              indonesia.
+            </p>
+
+            <button className="text-base font-semibold text-white bg-primary py-3 px-8 rounded-lg hover:shadow-lg hover:opacity-80 transition duration-300 ease-in-out">
+              Daftar
+            </button>
+            <button className="text-base font-semibold text-dark py-3 px-8 mx-5 border-2 border-stone-500 rounded-lg hover:shadow-lg hover:opacity-80 transition duration-300 ease-in-out">
+              Masuk
+            </button>
+          </div>
+          <div className="w-full self-end px-4 lg:w-1/2">
+            <div className="relative mt-10 lg:mt-0 lg:right-0">
+              <img
+                src={herosectiontwo}
+                alt="herosectiontwo"
+                className="max-w-full mx-auto rounded-lg"
+              />
+            </div>
+          </div>
         </div>
       </div>
-      <div className='mx-auto'>
-        <img src={herosectiontwo} alt="" className='w-96 rounded-lg' />
-      </div>
     </section>
-  )
+  );
 }
 
-export default HeroSectionTwo
+export default HeroSectionTwo;
