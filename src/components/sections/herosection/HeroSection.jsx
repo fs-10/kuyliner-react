@@ -36,21 +36,21 @@ function HeroSection() {
         <SwiperSlide>
           <img
             src={ImgSlide1}
-            className="h-96 w-full object-fill image-rendering"
+            className="w-full h-48 md:h-64 lg:h-96 object-cover"
             alt=""
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
             src={ImgSlide2}
-            className="h-96 w-full object-fill image-rendering"
+            className="w-full h-48 md:h-64 lg:h-96 object-cover"
             alt=""
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
             src={ImgSlide3}
-            className="h-96 w-full object-fill image-rendering"
+            className="w-full h-48 md:h-64 lg:h-96 object-cover"
             alt=""
           />
         </SwiperSlide>
