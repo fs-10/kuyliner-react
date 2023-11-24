@@ -1,3 +1,4 @@
+import { Component } from 'react';
 import LogoKuylinerBlack from '../../../assets/logo/kuyliner-black-logo.svg';
 import UserConsumer from '../../../assets/logo/user-unsign-logo.svg';
 import { NavLink } from 'react-router-dom';
@@ -31,4 +32,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default Navbar ;
