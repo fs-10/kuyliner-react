@@ -23,7 +23,35 @@ function MenuSection() {
 
         <div className="flex flex-wrap">
           <div className="w-full px-4 lg:w-1/2 xl:w-1/3">
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-10">
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-10 w-11/12">
+              <img src={MenuSatu} alt="menusatu" className="w-full  " />
+              <div className="py-5 px-6 bg-white">
+                <div className="flex items-center justify-start mb-2 bg-white">
+                  <img
+                    src={LogoMenuSatu}
+                    alt="logomenusatu"
+                    className="rounded-full"
+                  />
+                  <h3>
+                    <a
+                      href="#"
+                      className="block ms-4 font-medium text-lg text-dark hover:text-primary truncate"
+                    >
+                      Mala Kitchen
+                    </a>
+                  </h3>
+                </div>
+                <h2 className="font-extrabold text-3xl text-dark mb-2">
+                  Nasi Goreng
+                </h2>
+                <h2 className="font-base text-lg text-dark mb-4">
+                  Jakarta Timur
+                </h2>
+              </div>
+            </div>
+          </div>
+          <div className="w-full px-4 lg:w-1/2 xl:w-1/3">
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-10 w-11/12">
               <img src={MenuSatu} alt="menusatu" className="w-full" />
               <div className="py-5 px-6 bg-white">
                 <div className="flex items-center justify-start mb-2 bg-white">
@@ -51,7 +79,7 @@ function MenuSection() {
             </div>
           </div>
           <div className="w-full px-4 lg:w-1/2 xl:w-1/3">
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-10">
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-10 w-11/12">
               <img src={MenuSatu} alt="menusatu" className="w-full" />
               <div className="py-5 px-6 bg-white">
                 <div className="flex items-center justify-start mb-2 bg-white">
@@ -79,7 +107,7 @@ function MenuSection() {
             </div>
           </div>
           <div className="w-full px-4 lg:w-1/2 xl:w-1/3">
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-10">
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-10 w-11/12">
               <img src={MenuSatu} alt="menusatu" className="w-full" />
               <div className="py-5 px-6 bg-white">
                 <div className="flex items-center justify-start mb-2 bg-white">
@@ -107,7 +135,7 @@ function MenuSection() {
             </div>
           </div>
           <div className="w-full px-4 lg:w-1/2 xl:w-1/3">
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-10">
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-10 w-11/12">
               <img src={MenuSatu} alt="menusatu" className="w-full" />
               <div className="py-5 px-6 bg-white">
                 <div className="flex items-center justify-start mb-2 bg-white">
@@ -135,7 +163,7 @@ function MenuSection() {
             </div>
           </div>
           <div className="w-full px-4 lg:w-1/2 xl:w-1/3">
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-10">
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-10 w-11/12">
               <img src={MenuSatu} alt="menusatu" className="w-full" />
               <div className="py-5 px-6 bg-white">
                 <div className="flex items-center justify-start mb-2 bg-white">
@@ -163,7 +191,7 @@ function MenuSection() {
             </div>
           </div>
           <div className="w-full px-4 lg:w-1/2 xl:w-1/3">
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-10">
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-10 w-11/12">
               <img src={MenuSatu} alt="menusatu" className="w-full" />
               <div className="py-5 px-6 bg-white">
                 <div className="flex items-center justify-start mb-2 bg-white">
@@ -191,7 +219,7 @@ function MenuSection() {
             </div>
           </div>
           <div className="w-full px-4 lg:w-1/2 xl:w-1/3">
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-10">
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-10 w-11/12">
               <img src={MenuSatu} alt="menusatu" className="w-full" />
               <div className="py-5 px-6 bg-white">
                 <div className="flex items-center justify-start mb-2 bg-white">
@@ -219,35 +247,7 @@ function MenuSection() {
             </div>
           </div>
           <div className="w-full px-4 lg:w-1/2 xl:w-1/3">
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-10">
-              <img src={MenuSatu} alt="menusatu" className="w-full" />
-              <div className="py-5 px-6 bg-white">
-                <div className="flex items-center justify-start mb-2 bg-white">
-                  <img
-                    src={LogoMenuSatu}
-                    alt="logomenusatu"
-                    className="rounded-full"
-                  />
-                  <h3>
-                    <a
-                      href="#"
-                      className="block ms-4 font-medium text-lg text-dark hover:text-primary truncate"
-                    >
-                      Mala Kitchen
-                    </a>
-                  </h3>
-                </div>
-                <h2 className="font-extrabold text-3xl text-dark mb-2">
-                  Nasi Goreng
-                </h2>
-                <h2 className="font-base text-lg text-dark mb-4">
-                  Jakarta Timur
-                </h2>
-              </div>
-            </div>
-          </div>
-          <div className="w-full px-4 lg:w-1/2 xl:w-1/3">
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-10">
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-10 w-11/12">
               <img src={MenuSatu} alt="menusatu" className="w-full" />
               <div className="py-5 px-6 bg-white">
                 <div className="flex items-center justify-start mb-2 bg-white">
