@@ -96,7 +96,7 @@ function Register () {
                 </a>
               </div>
               
-              <div class="rounded-full border-solid border-2 border-yellow-300 p-3 flex flex-row gap-2 items-center justify-center flex-shrink-0 w-50 h-12 inline-block overflow-hidden">
+              <div class="rounded-full border-solid border-2 border-yellow-300 p-3 flex flex-row gap-2 items-center justify-center flex-shrink-0 w-50 h-12 overflow-hidden">
                   <button>
                     <svg class="flat-color-icons-google" width="24" height="25" viewBox="0 0 24 25" fill="none"
                       xmlns="http://www.w3.org/2000/svg">
