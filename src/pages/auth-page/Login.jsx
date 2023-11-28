@@ -1,6 +1,7 @@
 import { React, useState } from "react";
 import LogoKuylinerBlack from "../../assets/logo/kuyliner-black-logo.svg";
 import LogoLogin from "../../assets/img/photo Fill.png";
+import { NavLink } from "react-router-dom";
 
 function Login() {
   const [user, setUser] = useState({
@@ -43,12 +44,12 @@ function Login() {
                 </h3>
                 <span className="">
                   Belum Punya Akun?
-                  <a
-                    href="./register"
+                  <NavLink
+                    to="/register"
                     className="rounded-sm px-2 text-[#FFC836] font-bold"
                   >
                     Daftar
-                  </a>
+                  </NavLink>
                 </span>
                 <br></br>
                 <br></br>

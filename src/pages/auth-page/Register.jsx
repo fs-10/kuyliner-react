@@ -45,7 +45,7 @@ function Register() {
                 <span className="">
                   Sudah punya akun?
                   <NavLink
-                    href="/login"
+                    to="/login"
                     className="rounded-sm px-2 text-[#FFC836] font-bold"
                   >
                     Login

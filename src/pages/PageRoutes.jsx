@@ -12,13 +12,13 @@ import Register from "./auth-page/Register";
 function PageRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<Login />}/>
-      <Route path="/" element={<Register />}/>
-      <Route path="/" element={<LihatMenu />} />
       <Route path="/" element={<HomePage />} />
       <Route path="/" element={<DetailPage />} />
+      <Route path="/" element={<LihatMenu />} />
       <Route path="/" element={<ProfilePage />} />
       <Route path="/" element={<EditProfile />} />
+      <Route path="/login" element={<Login />}/>
+      <Route path="/register" element={<Register />}/>
     </Routes>
   );
 }
