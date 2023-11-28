@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { React, useState } from "react";
 import LogoKuylinerBlack from "../../assets/logo/kuyliner-black-logo.svg";
 import LogoLogin from "../../assets/img/photo Fill.png";
 
@@ -23,17 +23,30 @@ function Login() {
       <div class="container">
         <div class="flex flex-wrap">
           <div div class="w-full self-center px-6 lg:w-1/2 mb-5">
-            <img src={LogoLogin} alt="logo" className="h-30 w-30 left-20 right-0" />
+            <img
+              src={LogoLogin}
+              alt="logo"
+              className="h-30 w-30 left-20 right-0"
+            />
           </div>
 
           <form>
             <div class="w-full self-end px-6 ml-18 sm:px-40 sm:pt-7">
               <div class="mb-8 w-full px-4 ">
-                <img src={LogoKuylinerBlack} alt="logo" className="h-14 bg-auto" />
-                <h3 className="text-[#FFC836] font-extrabold text-2xl">Membuat Akun</h3>
+                <img
+                  src={LogoKuylinerBlack}
+                  alt="logo"
+                  className="h-14 bg-auto"
+                />
+                <h3 className="text-[#FFC836] font-extrabold text-2xl">
+                  Membuat Akun
+                </h3>
                 <span className="">
                   Belum Punya Akun?
-                  <a href="./register" className="rounded-sm px-2 text-[#FFC836] font-bold">
+                  <a
+                    href="./register"
+                    className="rounded-sm px-2 text-[#FFC836] font-bold"
+                  >
                     Daftar
                   </a>
                 </span>
@@ -74,7 +87,14 @@ function Login() {
 
               <div class="rounded-full border-solid border-2 border-yellow-300 p-3 flex flex-row gap-2 items-center justify-center flex-shrink-0 w-80 h-12 relative overflow-hidden">
                 <button>
-                  <svg class="flat-color-icons-google" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg
+                    class="flat-color-icons-google"
+                    width="24"
+                    height="25"
+                    viewBox="0 0 24 25"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
                     <path
                       d="M21.8055 10.5415H21V10.5H12V14.5H17.6515C16.827 16.8285 14.6115 18.5 12 18.5C8.6865 18.5 6 15.8135 6 12.5C6 9.1865 8.6865 6.5 12 6.5C13.5295 6.5 14.921 7.077 15.9805 8.0195L18.809 5.191C17.023 3.5265 14.634 2.5 12 2.5C6.4775 2.5 2 6.9775 2 12.5C2 18.0225 6.4775 22.5 12 22.5C17.5225 22.5 22 18.0225 22 12.5C22 11.8295 21.931 11.175 21.8055 10.5415Z"
                       fill="#FFC107"
@@ -97,7 +117,9 @@ function Login() {
                   </a>
                 </button>
               </div>
-              <a href="" class="align-center mt-10">Lupa Password?</a>
+              <a href="" class="align-center mt-10">
+                Lupa Password?
+              </a>
             </div>
           </form>
         </div>
