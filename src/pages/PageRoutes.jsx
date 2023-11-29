@@ -13,7 +13,7 @@ function PageRoutes() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/" element={<DetailPage />} />
+      <Route path="/detail/:id" element={<DetailPage />} />
       <Route path="/" element={<LihatMenu />} />
       <Route path="/" element={<ProfilePage />} />
       <Route path="/" element={<EditProfile />} />
