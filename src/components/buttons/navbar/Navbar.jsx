@@ -14,7 +14,7 @@ function Navbar() {
         <div className="flex items-center">
           <NavLink
             className="flex items-center gap-2 border-2 rounded-xl border-stone-500 py-2 px-3"
-            to="/"
+            to="/login"
           >
             <img src={UserConsumer} alt="" /> Masuk
           </NavLink>
