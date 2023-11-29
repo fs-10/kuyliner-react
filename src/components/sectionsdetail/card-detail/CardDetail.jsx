@@ -7,7 +7,8 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 
 function CardDetail() {
-  const [card, setCard] = useState([]);
+  const [card, setCard] = useState({});
+  const [review, setReview] = useState([]);
   const { pathname } = useLocation();
   const id = pathname.split("/");
 
@@ -15,18 +16,53 @@ function CardDetail() {
     (async () => {
       await axios
         .get(`https://talented-red-pronghorn.cyclic.app/products/${id[2]}`)
-        .then(({ data }) => {
-          setCard(data.data);
-        });
+        .then(({ data }) => setCard(data.data));
+    })();
+
+    (async () => {
+      await axios
+        .get("https://talented-red-pronghorn.cyclic.app/review/common")
+        .then(({ data }) => setReview(data.data));
     })();
   }, []);
 
   const dataCard = card ? card : false;
+  const dataReview = review ? review : false;
+  const getReview = dataReview.map((test) => test.stars);
+
+  const openTime = new Date(
+    dataCard.supplier_id ? dataCard.supplier_id.open_time : ""
+  )
+    .toLocaleTimeString()
+    .split(":");
+  const closedTime = new Date(
+    dataCard.supplier_id ? dataCard.supplier_id.closed_time : ""
+  )
+    .toLocaleTimeString()
+    .split(":");
+
+  const calculateAverage = (arr) =>
+    arr.length == 0 ? 0 : arr.reduce((a, b) => a + b) / arr.length;
+  const getValueStars = calculateAverage(getReview);
+
+  // console.log(calculateAverage(getReview));
+
+  const getStars = (valueStars) => {
+    const stars = [];
+    for (let i = 0; i < 5; i++) {
+      if (i < valueStars) {
+        stars.push(<StarIcon className="h-8 w-8 text-yellow-500" key={i} />);
+      } else {
+        stars.push(<StarIcon className="h-8 w-8 text-gray-400" key={i} />);
+      }
+    }
+    return stars;
+  };
+
+  const stars = getStars(getValueStars).map((test) => test);
+
 
   console.log(dataCard);
-
-  const openTime = new Date(dataCard.supplier_id ? dataCard.supplier_id.open_time : "").toLocaleTimeString().split(':');
-  const closedTime = new Date(dataCard.supplier_id ? dataCard.supplier_id.closed_time : "").toLocaleTimeString().split(':');
 
   return (
     <section className="mb-12">
@@ -46,10 +82,16 @@ function CardDetail() {
             </h2>
             <div className="flex items-center justify-start py-4">
               <img
-                src={dataCard.supplier_id ? dataCard.supplier_id.profile_image : ""}
+                src={
+                  dataCard.supplier_id ? dataCard.supplier_id.profile_image : ""
+                }
                 className="rounded-full lg:rounded-full w-[50px] h-[50px]"
               />
-              <p className="px-4 text-xl font-medium">{dataCard.supplier_id ? dataCard.supplier_id.supplier_username : ""}</p>
+              <p className="px-4 text-xl font-medium">
+                {dataCard.supplier_id
+                  ? dataCard.supplier_id.supplier_username
+                  : ""}
+              </p>
             </div>
             <div className="mb-5 lg:w-1/2">
               <div className="flex">
@@ -72,7 +114,9 @@ function CardDetail() {
                     d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
                   />
                 </svg>
-                <p className="text-lg font-medium mb-2 ms-2">{dataCard.supplier_id ? dataCard.supplier_id.address : ""}</p>
+                <p className="text-lg font-medium mb-2 ms-2">
+                  {dataCard.supplier_id ? dataCard.supplier_id.address : ""}
+                </p>
               </div>
               <div className="flex justify-between pe-5 py-1">
                 <div className="flex">
@@ -90,7 +134,10 @@ function CardDetail() {
                       d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
                     />
                   </svg>
-                  <p className="ms-2">{`${openTime[0]}:${openTime[1]}`} - {`${closedTime[0]}:${closedTime[1]}`}</p>
+                  <p className="ms-2">
+                    {`${openTime[0]}:${openTime[1]}`} -{" "}
+                    {`${closedTime[0]}:${closedTime[1]}`}
+                  </p>
                 </div>
                 <div className="flex">
                   <svg
@@ -107,7 +154,11 @@ function CardDetail() {
                       d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z"
                     />
                   </svg>
-                  <p className="ms-2">{dataCard.supplier_id ? dataCard.supplier_id.day_of_week : ""}</p>
+                  <p className="ms-2">
+                    {dataCard.supplier_id
+                      ? dataCard.supplier_id.day_of_week
+                      : ""}
+                  </p>
                 </div>
               </div>
               <div className="flex justify-between pe-5 py-1">
@@ -152,18 +203,17 @@ function CardDetail() {
                       />
                     </svg>
                   </svg>
-                  <p className="ms-2">+62354323423</p>
+                  <p className="ms-2">+6289123421</p>
                 </div>
               </div>
               <div className="flex justify-start pe-5 font-bold text-yellow-500 text-md items-center mt-5">
                 <div className="flex">
-                  <StarIcon className="h-8 w-8 text-yellow-500" />
-                  <StarIcon className="h-8 w-8 text-yellow-500" />
-                  <StarIcon className="h-8 w-8 text-yellow-500" />
-                  <StarIcon className="h-8 w-8 text-yellow-500" />
-                  <StarIcon className="h-8 w-8 text-gray-400" />
+                  {stars.map((item, index) =>
+                    // console.log(item.props.className)
+                    <StarIcon className={item.props.className} key={index} />
+                  )}
                 </div>
-                <p className="ms-5">4.0/5.0</p>
+                <p className="ms-5">{calculateAverage(getReview)}/5</p>
               </div>
             </div>
             <button className="text-base font-semibold text-white bg-primary py-3 px-8 rounded-lg hover:shadow-lg hover:opacity-80 transition duration-300 ease-in-out">
@@ -175,7 +225,7 @@ function CardDetail() {
       <div className="container px-6 mt-10">
         <iframe
           id="gmaps"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15841.973189575778!2d107.8228575!3d-6.9509891999999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68c561bd466d51%3A0xd2803279a5d5e520!2sPerumahan%20PUTERACO%20INDAH%20Cimanggung!5e0!3m2!1sid!2sid!4v1697029542606!5m2!1sid!2sid"
+          src={dataCard.supplier_id.location_gmaps}
           height={300}
           className="w-full"
         ></iframe>
