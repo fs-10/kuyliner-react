@@ -17,7 +17,7 @@ function MenuSection() {
     e.preventDefault();
 
     const { data } = await axios.get(
-      `https://talented-red-pronghorn.cyclic.app/products/search/${search}`
+      `${import.meta.env.VITE_PUBLIC_API_URL}/products/search/${search}`
     );
 
     setProduct(data);
@@ -25,10 +25,11 @@ function MenuSection() {
 
   const getProduct = async () => {
     const { data } = await axios.get(
-      `https://talented-red-pronghorn.cyclic.app/products/search/`
+      `${import.meta.env.VITE_PUBLIC_API_URL}/products/search/`
     );
     setProduct(data);
   };
+
 
   return (
     <>
@@ -78,22 +79,29 @@ function MenuSection() {
           <section className="flex flex-wrap justify-center lg:justify-start">
             {product.data &&
               product.data.map((item) => (
-                <Link to={`/detail/${item._id}`} className="w-80 lg:w-1/3 xl:w-1/4" key={item._id}>
+                <Link
+                  to={`/detail/${item._id}`}
+                  className="w-80 lg:w-1/3 xl:w-1/4"
+                  key={item._id}
+                >
                   <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-10 w-11/12">
                     <img src={item.product_image} className="w-full  " />
                     <div className="py-5 px-6 bg-white">
-                      <div className="flex items-center justify-start mb-2 bg-white">
+                      <div
+                        className="fl
+                      ex items-center justify-start mb-2 bg-white"
+                      >
                         <img
                           src={item.profile_image}
                           className="rounded-full"
                         />
                         <h3>
-                          <a
-                            href="#"
+                          <p
+                            // href="#"
                             className="block ms-4 font-medium text-lg text-dark hover:text-primary truncate"
                           >
                             {item.supplier_id.supplier_username}
-                          </a>
+                          </p>
                         </h3>
                       </div>
                       <h2 className="font-extrabold text-3xl text-dark mb-2">

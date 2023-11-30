@@ -15,13 +15,13 @@ function CardDetail() {
   useEffect(() => {
     (async () => {
       await axios
-        .get(`https://talented-red-pronghorn.cyclic.app/products/${id[2]}`)
+        .get(`${import.meta.env.VITE_PUBLIC_API_URL}/products/${id[2]}`)
         .then(({ data }) => setCard(data.data));
     })();
 
     (async () => {
       await axios
-        .get("https://talented-red-pronghorn.cyclic.app/review/common")
+        .get(`${import.meta.env.VITE_PUBLIC_API_URL}/review/common/${id[2]}`)
         .then(({ data }) => setReview(data.data));
     })();
   }, []);
@@ -45,8 +45,6 @@ function CardDetail() {
     arr.length == 0 ? 0 : arr.reduce((a, b) => a + b) / arr.length;
   const getValueStars = calculateAverage(getReview);
 
-  // console.log(calculateAverage(getReview));
-
   const getStars = (valueStars) => {
     const stars = [];
     for (let i = 0; i < 5; i++) {
@@ -60,9 +58,6 @@ function CardDetail() {
   };
 
   const stars = getStars(getValueStars).map((test) => test);
-
-
-  console.log(dataCard);
 
   return (
     <section className="mb-12">
@@ -209,7 +204,6 @@ function CardDetail() {
               <div className="flex justify-start pe-5 font-bold text-yellow-500 text-md items-center mt-5">
                 <div className="flex">
                   {stars.map((item, index) =>
-                    // console.log(item.props.className)
                     <StarIcon className={item.props.className} key={index} />
                   )}
                 </div>
@@ -225,7 +219,7 @@ function CardDetail() {
       <div className="container px-6 mt-10">
         <iframe
           id="gmaps"
-          src={dataCard.supplier_id.location_gmaps}
+          src={dataCard.supplier_id ? dataCard.supplier_id.location_gmaps : ""}
           height={300}
           className="w-full"
         ></iframe>
