@@ -15,7 +15,7 @@ function PageRoutes() {
       <Route path="/" element={<HomePage />} />
       <Route path="/detail/:id" element={<DetailPage />} />
       <Route path="/" element={<LihatMenu />} />
-      <Route path="/" element={<ProfilePage />} />
+      <Route path="/profile" element={<ProfilePage />} />
       <Route path="/" element={<EditProfile />} />
       <Route path="/login" element={<Login />}/>
       <Route path="/register" element={<Register />}/>
