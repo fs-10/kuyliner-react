@@ -20,7 +20,7 @@ function UlasanPengunjung() {
   const getStars = (valueStars) => {
     const stars = [];
     for (let i = 0; i < 5; i++) {
-      if (i < valueStars) {
+      if (i < Math.floor(valueStars)) {
         stars.push(<StarIcon className="h-8 w-8 text-yellow-500" key={i} />);
       } else {
         stars.push(<StarIcon className="h-8 w-8 text-gray-400" key={i} />);
@@ -29,9 +29,17 @@ function UlasanPengunjung() {
     return stars;
   };
 
+  const convertDate = (date) => new Date(date).toLocaleString().split(",")[0];
+
+  // const stars = getStars(getValueStars).map((star) => star);
+  // console.log(stars);
+
+  console.log(review);
+
   return (
     <section className="container my-16">
       <div className="text-3xl h-[400px] overflow-y-scroll border">
+        {review.map((item) => console.log(item))}
         {review.length != 0 ? (
           review.map((item, index) => (
             <section
@@ -42,37 +50,31 @@ function UlasanPengunjung() {
                 <div className="flex items-center">
                   <img
                     src={item.id_reviewers.profile_image}
-                    alt=""
                     className="rounded-full"
                   />
-                  <h1 className="ms-5 text-xl font-bold">Asuma Toki</h1>
+                  <h1 className="ms-5 text-xl font-bold">
+                    {item.id_reviewers.first_name}
+                    {item.id_reviewers.last_name}
+                  </h1>
                 </div>
                 <div className="flex mt-2 items-center">
-                  <div className="flex">
-                    <StarIcon className="h-8 w-8 text-yellow-500" />
-                    <StarIcon className="h-8 w-8 text-yellow-500" />
-                    <StarIcon className="h-8 w-8 text-yellow-500" />
-                    <StarIcon className="h-8 w-8 text-yellow-500" />
-                    <StarIcon className="h-8 w-8 text-gray-400" />
-                  </div>
+                  <div className="flex">{getStars(item.stars)}</div>
                   <h2 className="ms-2 text-lg font-bold text-yellow-500">
-                    4.0/5.0
+                    {item.stars}/5
                   </h2>
                 </div>
-                <h2 className="text-sm mt-3">11/02/2023</h2>
+                <h2 className="text-sm mt-3">
+                  {convertDate(item.date_create)}
+                </h2>
               </div>
               <div className="lg:w-3/4">
-                <h1 className="text-lg py-3">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Ullam, perspiciatis incidunt nostrum at voluptate eius.
-                </h1>
+                <h1 className="text-lg py-3">{item.text_review}</h1>
               </div>
             </section>
           ))
         ) : (
           <h4 className="text-center mt-44">This product has no review</h4>
         )}
-
       </div>
     </section>
   );

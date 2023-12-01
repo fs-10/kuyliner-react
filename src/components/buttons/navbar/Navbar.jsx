@@ -15,7 +15,9 @@ function Navbar() {
     (async () => {
       await axios
         .get(`${import.meta.env.VITE_PUBLIC_API_URL}/user/${id}`, {
-          headers: token,
+          headers: {
+            Authorization: `Bearer ${token}`
+          },
         })
         .then(({ data }) => setUser(data));
     })();

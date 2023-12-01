@@ -48,7 +48,7 @@ function CardDetail() {
   const getStars = (valueStars) => {
     const stars = [];
     for (let i = 0; i < 5; i++) {
-      if (i < valueStars) {
+      if (i < Math.floor(valueStars)) {
         stars.push(<StarIcon className="h-8 w-8 text-yellow-500" key={i} />);
       } else {
         stars.push(<StarIcon className="h-8 w-8 text-gray-400" key={i} />);
@@ -57,7 +57,7 @@ function CardDetail() {
     return stars;
   };
 
-  const stars = getStars(getValueStars).map((test) => test);
+  const stars = getStars(getValueStars).map((star) => star);
 
   return (
     <section className="mb-12">
