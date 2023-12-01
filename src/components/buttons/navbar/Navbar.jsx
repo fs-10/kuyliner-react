@@ -24,7 +24,6 @@ function Navbar() {
   
   const dataUser = user ? user.data : ""; 
   
-  console.log(dataUser);
   return (
     <nav className="py-3 border-b">
       <div className="container mx-auto flex justify-between items-center">
