@@ -1,13 +1,15 @@
 import { React, useState } from "react";
 import LogoKuylinerBlack from "../../assets/logo/kuyliner-black-logo.svg";
 import LogoLogin from "../../assets/img/photo Fill.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Login() {
   const [user, setUser] = useState({
-    username: "",
+    email: "",
     password: "",
   });
+
   const handleInput = (event) => {
     setUser({
       ...user,
@@ -15,15 +17,25 @@ function Login() {
     });
   };
 
-  const login = (event) => {
+  const navigate = useNavigate();
+
+  const handleLogin = async (event) => {
     event.preventDefault();
-    console.log(user);
+
+    const { data } = await axios.post(
+      `${import.meta.env.VITE_PUBLIC_API_URL}/user/signin`,
+      user
+    );
+
+    localStorage.setItem("token", data.token);
+
+    return navigate("/");
   };
   return (
-    <section id="register" class="py-20">
-      <div class="container">
-        <div class="flex flex-wrap">
-          <div div class="w-full self-center px-6 lg:w-1/2 mb-5">
+    <section id="register" className="py-20">
+      <div className="container">
+        <div className="flex flex-wrap">
+          <div className="w-full self-center px-6 lg:w-1/2 mb-5">
             <img
               src={LogoLogin}
               alt="logo"
@@ -32,8 +44,8 @@ function Login() {
           </div>
 
           <form>
-            <div class="w-full self-end px-6 ml-18 sm:px-40 sm:pt-7">
-              <div class="mb-8 w-full px-4 ">
+            <div className="w-full self-end px-6 ml-18 sm:px-40 sm:pt-7">
+              <div className="mb-8 w-full px-4 ">
                 <img
                   src={LogoKuylinerBlack}
                   alt="logo"
@@ -53,38 +65,53 @@ function Login() {
                 </span>
                 <br></br>
                 <br></br>
-                <label for="email" class="text-base font-bold text-primary">
+                <label
+                  htmlFor="email"
+                  className="text-base font-bold text-primary"
+                >
                   Email
                 </label>
                 <input
                   type="email"
                   id="email"
-                  class="w-full rounded-md bg-slate-100 p-3 text-dark focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                  className="w-full rounded-md bg-slate-100 p-3 text-dark focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
                   placeholder="example@email.com"
                   required
                   aria-describedby="email"
                   name="email"
+                  autoComplete="username"
+                  value={user.email}
+                  onChange={handleInput}
                 />
               </div>
-              <div class="mb-8 w-full px-4">
-                <label for="password" class="text-base font-bold text-primary">
+              <div className="mb-8 w-full px-4">
+                <label
+                  htmlFor="password"
+                  className="text-base font-bold text-primary"
+                >
                   Password
                 </label>
                 <input
                   type="password"
                   id="password"
-                  class="w-full rounded-md bg-slate-100 p-3 text-dark focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                  className="w-full rounded-md bg-slate-100 p-3 text-dark focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
                   placeholder="Masukan password"
                   required
                   aria-describedby="password"
                   name="password"
+                  autoComplete="current-password"
+                  value={user.password}
+                  onChange={handleInput}
                 />
               </div>
-              <div className="rounded-full border-solid border-2 border-yellow-300 px-10 flex flex-row gap-20 items-center justify-center flex-shrink-0 w-80 h-10 relative  mb-5 mt-2">
-                <a href="#" className="rounded-sm  px-5 py-1 font-bold text-xl">
+              <button
+                onClick={handleLogin}
+                className="rounded-full border-solid border-2 border-yellow-300 px-10 flex flex-row gap-20 items-center justify-center flex-shrink-0 w-80 h-10 relative  mb-5 mt-2"
+              >
+                <a className="rounded-sm  px-5 py-1 font-bold text-xl">
                   Submit
                 </a>
-              </div>
+              </button>
             </div>
           </form>
         </div>
