@@ -1,13 +1,44 @@
-import React from "react";
-import UserProfile from "../../../assets/profile/profile-user.jpg";
+import React, { useEffect, useState } from "react";
+// import UserProfile from "../../../assets/profile/profile-user.jpg";
+import UserConsumer from "../../../assets/logo/user-unsign-logo.svg";
 import { EnvelopeIcon } from "@heroicons/react/24/solid";
+import axios from "axios";
 
 function DetailProfile() {
+  const [user, setUser] = useState([]);
+
+  const id = localStorage.getItem("userId");
+  const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    (async () => {
+      await axios
+        .get(`${import.meta.env.VITE_PUBLIC_API_URL}/user/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then(({ data }) => setUser(data.data));
+    })();
+  }, []);
+
   return (
     <section className="container py-10">
       <div className=" flex justify-center flex-col items-center">
-        <img src={UserProfile} alt="" className="w-60 rounded-full" />
-        <h1 className="text-3xl font-bold mt-5">Username</h1>
+        <img
+          src={
+            user.profile_image != undefined
+              ? user.profile_image.length != 0
+                ? user.profile_image.length
+                : UserConsumer
+              : "Error on Code"
+          }
+          alt=""
+          className="w-60 rounded-full border border-black"
+        />
+        <h1 className="text-3xl font-bold mt-5">
+          {user && user.first_name} {user && user.last_name}
+        </h1>
         <div className="flex items-center">
           <div className="flex py-3">
             <svg
@@ -29,18 +60,20 @@ function DetailProfile() {
                 d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
               />
             </svg>
-            <h1 className="ms-1">Bandung</h1>
+            <h1 className="ms-1">
+              {user && user.location ? user.location : "none"}
+            </h1>
           </div>
           <div className="flex ms-5">
             <EnvelopeIcon className="h-6 w-6" />
-            <h1 className="ms-1">awdiuhasd@gmail.com</h1>
+            <h1 className="ms-1">{user && user.email}</h1>
           </div>
         </div>
 
-        <p className="text-md text-center">
+        {/* <p className="text-md text-center">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vel, odit!
           Lorem ipsum dolor sit amet.
-        </p>
+        </p> */}
         <button className="text-base font-semibold text-white bg-primary py-3 px-8 mt-5 rounded-lg hover:shadow-lg hover:opacity-80 transition duration-300 ease-in-out">
           Edit Profile
         </button>
