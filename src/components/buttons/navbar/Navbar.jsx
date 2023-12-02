@@ -16,16 +16,15 @@ function Navbar() {
       await axios
         .get(`${import.meta.env.VITE_PUBLIC_API_URL}/user/${id}`, {
           headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${token}`,
           },
         })
         .then(({ data }) => setUser(data));
     })();
   }, []);
 
-  
-  const dataUser = user ? user.data : ""; 
-  
+  const dataUser = user ? user.data : "";
+
   return (
     <nav className="py-3 border-b">
       <div className="container mx-auto flex justify-between items-center">
@@ -39,7 +38,14 @@ function Navbar() {
               className="flex items-center gap-2 border-2 rounded-xl border-stone-500 py-2 px-3"
               to="/profile"
             >
-              <img src={dataUser.profile_image != "" ? dataUser.profile_image : UserConsumer} /> {dataUser.first_name} {dataUser.last_name}
+              <img
+                src={
+                  dataUser.profile_image != ""
+                    ? dataUser.profile_image
+                    : UserConsumer
+                }
+              />
+              {dataUser.username}
             </NavLink>
           ) : (
             <NavLink

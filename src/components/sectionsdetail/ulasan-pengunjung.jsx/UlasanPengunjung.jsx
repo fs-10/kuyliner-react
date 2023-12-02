@@ -31,15 +31,9 @@ function UlasanPengunjung() {
 
   const convertDate = (date) => new Date(date).toLocaleString().split(",")[0];
 
-  // const stars = getStars(getValueStars).map((star) => star);
-  // console.log(stars);
-
-  console.log(review);
-
   return (
     <section className="container my-16">
       <div className="text-3xl h-[400px] overflow-y-scroll border">
-        {review.map((item) => console.log(item))}
         {review.length != 0 ? (
           review.map((item, index) => (
             <section

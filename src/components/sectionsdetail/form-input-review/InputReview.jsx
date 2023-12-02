@@ -16,8 +16,6 @@ function InputReview() {
     text_review: "",
   });
 
-  console.log(user);
-
   useEffect(() => {
     (async () => {
       await axios
