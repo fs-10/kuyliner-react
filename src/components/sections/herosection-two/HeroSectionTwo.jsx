@@ -3,6 +3,9 @@ import herosectiontwo from "../../../assets/herosection-two/herosection-two.jpg"
 import { NavLink } from "react-router-dom";
 
 function HeroSectionTwo() {
+  const getId = localStorage.getItem("userId");
+
+
   return (
     <section className="pt-20">
       <div className="container">
@@ -21,12 +24,24 @@ function HeroSectionTwo() {
               indonesia.
             </p>
 
-            <NavLink to="/register" className="text-base font-semibold text-white bg-primary py-3 px-8 rounded-lg hover:shadow-lg hover:opacity-80 transition duration-300 ease-in-out">
-              Daftar
-            </NavLink>
-            <NavLink to="/login" className="text-base font-semibold text-dark py-3 px-8 mx-5 border-2 border-stone-500 rounded-lg hover:shadow-lg hover:opacity-80 transition duration-300 ease-in-out">
-              Masuk
-            </NavLink>
+            {getId != "" ? (
+              ""
+            ) : (
+              <section>
+                <NavLink
+                  to="/register"
+                  className="text-base font-semibold text-white bg-primary py-3 px-8 rounded-lg hover:shadow-lg hover:opacity-80 transition duration-300 ease-in-out"
+                >
+                  Daftar
+                </NavLink>
+                <NavLink
+                  to="/login"
+                  className="text-base font-semibold text-dark py-3 px-8 mx-5 border-2 border-stone-500 rounded-lg hover:shadow-lg hover:opacity-80 transition duration-300 ease-in-out"
+                >
+                  Masuk
+                </NavLink>
+              </section>
+            )}
           </div>
           <div className="w-full self-end px-4 lg:w-1/2">
             <div className="relative mt-10 lg:mt-0 lg:right-0">
