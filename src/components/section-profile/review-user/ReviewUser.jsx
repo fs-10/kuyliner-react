@@ -50,15 +50,14 @@ function ReviewUser() {
       .map((test) => test[getData]);
   };
 
-  console.log(
-    "Supplier:",
-    supplier.map((test) => test)
-  );
+  const convertDate = (date) => new Date(date).toLocaleString().split(",")[0];
 
   return (
     <section className="container my-10">
       <h1 className="text-lg font-semibold mb-3">All Reviews From Resort</h1>
       <section className="overflow-y-scroll h-[500px] border">
+      {console.log(review.map((item) => item))}
+
 
         {review &&
           review.map((item, index) => (
@@ -86,7 +85,7 @@ function ReviewUser() {
                     | {getDataSupplier(item.id_products.supplier_id, "address")}
                   </h1>
                 </div>
-                <h1 className="text-sm mt-2">11/09/2023</h1>
+                <h1 className="text-sm mt-2">{convertDate(item.date_create)}</h1>
                 <div className="flex items-center">
                   <div className="flex mt-2">{getStars(item.stars)}</div>
                   <h1 className="text-sm mt-2 ms-3 text-yellow-500">
@@ -94,9 +93,7 @@ function ReviewUser() {
                   </h1>
                 </div>
                 <h1 className="text-sm mt-3">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Molestiae commodi minus blanditiis, quaerat eligendi saepe
-                  impedit maxime perferendis perspiciatis earum?
+                  {item.text_review}
                 </h1>
               </div>
               <div className="lg:flex lg:w-1/4 relative mt-5 lg:mt-0 lg:right-5">

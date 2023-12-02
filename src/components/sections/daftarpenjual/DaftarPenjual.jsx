@@ -7,7 +7,7 @@ function DaftarPenjual() {
       <div className="container">
         <div className="flex flex-wrap">
           <div className="w-full self-center px-4 lg:w-1/2">
-            <h1 className="text-base font-semibold text-primary text-xl md:text-xl">
+            <h1 className=" font-semibold text-primary text-xl md:text-xl">
               Ingin menjual produk seperti mereka?
             </h1>
             <h2 className="font-bold text-dark text-5xl mt-1 mb-3">

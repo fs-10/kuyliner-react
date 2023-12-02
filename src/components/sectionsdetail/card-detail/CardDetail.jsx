@@ -130,7 +130,7 @@ function CardDetail() {
                     />
                   </svg>
                   <p className="ms-2">
-                    {`${openTime[0]}:${openTime[1]}`} -{" "}
+                    {`${openTime[0]}:${openTime[1]}`} -
                     {`${closedTime[0]}:${closedTime[1]}`}
                   </p>
                 </div>
@@ -203,9 +203,9 @@ function CardDetail() {
               </div>
               <div className="flex justify-start pe-5 font-bold text-yellow-500 text-md items-center mt-5">
                 <div className="flex">
-                  {stars.map((item, index) =>
+                  {stars.map((item, index) => (
                     <StarIcon className={item.props.className} key={index} />
-                  )}
+                  ))}
                 </div>
                 <p className="ms-5">{calculateAverage(getReview)}/5</p>
               </div>
