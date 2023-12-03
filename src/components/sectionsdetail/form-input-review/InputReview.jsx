@@ -53,7 +53,6 @@ function InputReview() {
           },
         }
       );
-      console.log(test);
     } catch (error) {
       console.log(`Error: ${error.message}`);
     }
