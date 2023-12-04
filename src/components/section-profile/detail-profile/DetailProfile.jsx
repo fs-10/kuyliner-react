@@ -92,7 +92,7 @@ function DetailProfile() {
             to="/login"
             className="text-base font-semibold text-white bg-red-600 py-3 px-8 mt-5 rounded-lg hover:shadow-lg hover:opacity-80 transition duration-300 ease-in-out"
           >
-            Masuk
+            Log Out
           </NavLink>
         </div>
       </div>
