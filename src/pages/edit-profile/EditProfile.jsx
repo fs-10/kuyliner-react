@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import UserProfile from "../../assets/logo/user-unsign-logo.svg";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
-import { Cloudinary } from "@cloudinary/url-gen";
+// import { Cloudinary } from "@cloudinary/url-gen";
 
 function EditProfile() {
   const [dataUser, setDataUser] = useState([]);
@@ -14,17 +14,10 @@ function EditProfile() {
   });
   const id = localStorage.getItem("userId");
   const token = localStorage.getItem("token");
-
-  const cloudinary = new Cloudinary({
-    cloud: {
-      cloudName: import.meta.env.VITE_CLOUDINARY_NAME,
-      apiKey: import.meta.env.VITE_CLOUDINARY_API_KEY,
-      apiSecret: import.meta.env.VITE_CLOUDINARY_API_SECRET,
-    },
-  });
-
+  
   const handleImageChange = (e) => {
     const file = e.target.files[0];
+    console.log(e.target.value);
 
     if (file) {
       const reader = new FileReader();
@@ -32,10 +25,20 @@ function EditProfile() {
         setImage(reader.result);
       };
       reader.readAsDataURL(file);
+      setImage(reader)
     } else {
       setSelectedImage(null);
     }
   };
+
+  // const cloudinary = new Cloudinary({
+  //   cloud: {
+  //     cloudName: import.meta.env.VITE_CLOUDINARY_NAME,
+  //     apiKey: import.meta.env.VITE_CLOUDINARY_API_KEY,
+  //     apiSecret: import.meta.env.VITE_CLOUDINARY_API_SECRET,
+  //   },
+  // });
+
 
   const handleInput = (e) => {
     setUser({
@@ -116,6 +119,7 @@ function EditProfile() {
             type="file"
             onChange={handleImageChange}
             accept=".png, .jpg, .jpeg"
+            formEncType="multipart/form-data"
           />
         </section>
         <div className="container w-full border-2 rounded-lg  border-gray-500 py-2 mb-5 ">

@@ -64,7 +64,6 @@ function InputReview() {
         <div className="flex items-center">
           <img
             src={user.profile_image ? user.profile_image : ""}
-            alt=""
             className="rounded-full lg:rounded-full"
           />
           <h1 className="ms-5 font-bold">{`${user.first_name ? user.first_name : ""} ${user.last_name ? user.last_name : ""}`}</h1>
