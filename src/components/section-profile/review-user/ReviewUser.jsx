@@ -56,8 +56,6 @@ function ReviewUser() {
     <section className="container my-10">
       <h1 className="text-lg font-semibold mb-3">All Reviews From Resort</h1>
       <section className="overflow-y-scroll h-[500px] border">
-      {console.log(review.map((item) => item))}
-
 
         {review &&
           review.map((item, index) => (

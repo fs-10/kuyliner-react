@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-// import UserProfile from "../../../assets/profile/profile-user.jpg";
 import UserConsumer from "../../../assets/logo/user-unsign-logo.svg";
 import { EnvelopeIcon } from "@heroicons/react/24/solid";
 import axios from "axios";
+import { NavLink } from "react-router-dom";
 
 function DetailProfile() {
   const [user, setUser] = useState([]);
@@ -74,9 +74,9 @@ function DetailProfile() {
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vel, odit!
           Lorem ipsum dolor sit amet.
         </p> */}
-        <button className="text-base font-semibold text-white bg-primary py-3 px-8 mt-5 rounded-lg hover:shadow-lg hover:opacity-80 transition duration-300 ease-in-out">
+        <NavLink to={`/edit/${id}`} className="text-base font-semibold text-white bg-primary py-3 px-8 mt-5 rounded-lg hover:shadow-lg hover:opacity-80 transition duration-300 ease-in-out">
           Edit Profile
-        </button>
+        </NavLink>
       </div>
     </section>
   );
