@@ -22,6 +22,13 @@ function DetailProfile() {
     })();
   }, []);
 
+  const handleLogout = (e) => {
+    e.preventDefault();
+
+    localStorage.removeItem("userId");
+    localStorage.removeItem("token");
+  };
+
   return (
     <section className="container py-10">
       <div className=" flex justify-center flex-col items-center">
@@ -74,9 +81,20 @@ function DetailProfile() {
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vel, odit!
           Lorem ipsum dolor sit amet.
         </p> */}
-        <NavLink to={`/edit/${id}`} className="text-base font-semibold text-white bg-primary py-3 px-8 mt-5 rounded-lg hover:shadow-lg hover:opacity-80 transition duration-300 ease-in-out">
-          Edit Profile
-        </NavLink>
+        <div className="flex gap-5">
+          <NavLink
+            to={`/edit/${id}`}
+            className="text-base font-semibold text-white bg-primary py-3 px-8 mt-5 rounded-lg hover:shadow-lg hover:opacity-80 transition duration-300 ease-in-out"
+          >
+            Edit Profile
+          </NavLink>
+          <NavLink
+            to="/login"
+            className="text-base font-semibold text-white bg-red-600 py-3 px-8 mt-5 rounded-lg hover:shadow-lg hover:opacity-80 transition duration-300 ease-in-out"
+          >
+            Masuk
+          </NavLink>
+        </div>
       </div>
     </section>
   );

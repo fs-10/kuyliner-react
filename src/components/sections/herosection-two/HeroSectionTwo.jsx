@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 function HeroSectionTwo() {
   const getId = localStorage.getItem("userId");
 
+  console.log(getId);
 
   return (
     <section className="pt-20">
@@ -24,7 +25,7 @@ function HeroSectionTwo() {
               indonesia.
             </p>
 
-            {getId != "" ? (
+            {getId != null ? (
               ""
             ) : (
               <section>
